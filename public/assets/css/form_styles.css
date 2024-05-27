@@ -1,0 +1,93 @@
+/* assets/css/form_styles.css */
+
+/* Container styles */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Form styles */
+.form {
+    width: 400px; /* Adjust the width as needed */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form field styles */
+.custom-form-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333333;
+}
+
+.custom-form-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.hidden-field {
+    display: none;
+}
+
+.readonly-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    background-color: #f8f8f8;
+    color: #555555;
+    cursor: not-allowed;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.link {
+    display: block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+/* assets/css/form_styles.css */
+
+/* Date field styles */
+.custom-date-field {
+    width: calc(100% - 22px); /* Adjust the width as needed */
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* Apply custom styles to date input */
+.custom-date-field::-webkit-calendar-picker-indicator {
+    display: none; /* Hide the default calendar icon */
+}
+
+/* Apply custom styles to date input for Firefox */
+.custom-date-field[type="date"]::-webkit-inner-spin-button,
+.custom-date-field[type="date"]::-webkit-clear-button {
+    display: none; /* Hide the default spin button and clear button */
+}
+

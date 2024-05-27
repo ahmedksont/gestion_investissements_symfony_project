@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/forms.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/font/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <style>
+        /* Add your custom styles here */
+        .form-container {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-submit {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-delete {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+  
+    <section class="form-container">
+    <h1>Edit User</h1>
+
+     <form method="post">
+            {{ form_start(form) }}
+            {{ form_row(form.email, {'attr': {'class': 'form-input'}}) }}
+            {{ form_row(form.password, {'attr': {'class': 'form-input'}}) }}
+            {{ form_row(form.Nom, {'attr': {'class': 'form-input'}}) }}
+            {{ form_row(form.Prenom, {'attr': {'class': 'form-input'}}) }}
+            {{ form_row(form.NomSociete, {'attr': {'class': 'form-input'}}) }}
+            {{ form_row(form.Adresse, {'attr': {'class': 'form-input'}}) }}
+            <button type="submit" class="form-submit">Update</button>
+            {{ form_end(form) }}
+        </form>
+
+{% endblock %}

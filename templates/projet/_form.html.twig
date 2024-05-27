@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+{{ form_row(form.LibelleP, {'attr': {'class': 'form-input'}}) }}
+{{ form_row(form.SecteurP, {'attr': {'class': 'form-input'}}) }}
+{{ form_row(form.CoutFixe, {'attr': {'class': 'form-input'}}) }}
+{{ form_row(form.CoutVar, {'attr': {'class': 'form-input'}}) }}
+{{ form_row(form.DureeP, {'attr': {'class': 'form-input'}}) }}
+{{ form_row(form.PictureUrl, {'attr': {'class': 'form-input'}}) }}
+{{ form_row(form.convention, {'attr': {'class': 'form-input'}}) }}
+
+<button type="submit" class="form-submit">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

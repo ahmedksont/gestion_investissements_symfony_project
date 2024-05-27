@@ -1,0 +1,229 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/font/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+            <link rel="stylesheet" href="assets/css/plugins/owl.carousel.min.css">
+            <link rel="stylesheet" href="assets/font/flaticon.css">
+            <link rel="stylesheet" href="assets/css/all.min.css">
+            <link rel="stylesheet" href="assets/css/fontawsom-all.min.css">
+            <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .border-shadow {
+    border: 1px solid #ddd; /* Border color */
+    border-radius: 5px; /* Adjust border radius as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    padding: 20px; /* Adjust padding as needed */
+    margin-bottom: 20px; /* Add some space below the container */
+}
+
+    </style>
+{% endblock %}
+
+{% block body %}
+<header>
+                <div class="my-nav sub-01">
+                    <div class="container">
+                        <div class="nav-items">
+                            <div class="menu-toggle">
+                                <div class="menu-burger"></div>
+                            </div>
+                            <div class="logo">
+                                 <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo">
+                            </div>
+
+                            <div class="menu-items">
+                                <div class="menu">
+                                    <ul>
+                                        <li><a href="{{ path('home') }}">Home</a></li>
+                                        {% if app.user %}
+                {# If the user is authenticated #}
+                {% if app.user.id == 1 %}
+                    {# If the authenticated user's ID is 1 #}
+                    <li><a href="{{ path('app_projet_index') }}">See Projects</a></li>
+                    <li><a href="{{ path('app_user_index') }}">See Users</a></li>
+                    <li><a href="{{ path('app_convention_index') }}">See Conventions</a></li>
+                {% else %}
+                    {# If the authenticated user's ID is not 1 #}
+                    <li><a href="{{ path('app_projet_index') }}">See Projects</a></li>
+                    <li><a href="{{ path('app_user_conventions') }}">See Own Conventions</a></li>
+                {% endif %}
+                <li><a href="{{ path('app_user_update', {'id': app.user.id}) }}">Edit Profile</a></li>
+
+                <li><a href="{{ path('app_logout') }}">Logout</a></li>
+            {% else %}
+                {# If the user is not authenticated #}
+                <li><a href="{{ path('app_login') }}">Login</a></li>
+                <li><a href="{{ path('app_register') }}">Register</a></li>
+            {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <section class="abt-01">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="seting">
+                                    <h3>Utilisateurs</h3>
+                                    <ol>
+                                        <li><a href="{{ path('home') }}" >Home</a> <i class="fas fa-chevron-double-right"></i></li>
+                                        <li>Liste des utilisateur</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                 <br><br><br><br>   
+
+    <h1>User index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>NomSociete</th>
+                <th>Adresse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.NomSociete }}</td>
+                <td>{{ user.Adresse }}</td>
+                <td>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+        <br><br><br><br>
+    <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="wrapper">
+                                <div class="content">
+                                    <h2>About Us</h2>
+                                    <p>We’re reimagining how you buy, sell and
+                                    rent. It’s now easier to get into a place you
+                                    love. So let’s do this, together.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="wrapper">
+                                <div class="content">
+                                    <h2>Quick Links</h2>
+                                    <ul>
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">Services</a></li>
+                                        <li><a href="#">Blog</a></li>
+                                        <li><a href="#">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="wrapper">
+                                <div class="content">
+                                    <h2>contact us</h2>
+                                    <ol>
+                                        <li>ksontini@bk.ru</li>
+                                        <li>Sousse Beb Bhar
+                                            4000 , Tunisia</li>
+                                        <li>+216 46280499</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="wrapper">
+                                <div class="content">
+                                    <h2>follow us</h2>
+                                    <div class="social-media">
+                                        <ol>
+                                            <li><i class="fab fa-facebook-f"></i></li>
+                                            <li><i class="fab fa-twitter"></i></li>
+                                            <li><i class="fab fa-instagram"></i></li>
+                                            <li><i class="fab fa-pinterest-p"></i></li>
+                                            <li><i class="fab fa-dribbble"></i></li>
+                                            <li><i class="fab fa-google"></i></li>
+                                        </ol>
+                                    </div>
+                                    <h2>subscribe</h2>
+                                    <div class="submit-card">
+                                        <div class="form-group">
+                                            <input class="form-control" name="email" placeholder="Your Email">
+                                            <i class="fal fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <div class="end-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="copy-right">
+                                <ul>
+                                
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Services</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="copy-right">
+                                <ol>
+                                    <li>2024 @ Project Symfony All Rights Reserved Designed and developed by<a href="https://www.facebook.com/ahmed.ksontini2">Ahmed Ksontini</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ </body>   <script src="assets/js/jquery-3.2.1.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/plugins/owl.carousel.min.js"></script>
+        <script src="assets/js/script.js"></script>
+{% endblock %}

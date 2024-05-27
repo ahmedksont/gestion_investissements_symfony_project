@@ -1,0 +1,60 @@
+easy_admin:
+  design:
+    templates:
+      layout: "admin/custom_layout.html.twig"
+  entities:
+    Projet:
+      class: App\Entity\Projet
+      label: Projets
+      list:
+        fields:
+          - CodeP
+          - LibelleP
+          - SecteurP
+          - CoutFixe
+          - CoutVar
+          - DureeP
+      form:
+        fields:
+          - CodeP
+          - LibelleP
+          - SecteurP
+          - CoutFixe
+          - CoutVar
+          - DureeP
+
+    User:
+      class: App\Entity\User
+      label: Users
+      list:
+        fields:
+          - Id
+          - Email
+          - Role
+          - Adresse
+          - NomSociete
+      form:
+        fields:
+          - Email
+          - Role
+          - Adresse
+          - NomSociete
+
+    Convention:
+      class: App\Entity\Convention
+      label: Conventions
+      custom_actions:
+        - name: show_all
+          label: Show All Conventions
+          icon: "fa fa-list"
+          action: "showAllConventions"
+      list:
+        fields:
+          - CodeP
+          - Mat
+          - DateDebut
+      form:
+        fields:
+          - CodeP
+          - Mat
+          - DateDebut

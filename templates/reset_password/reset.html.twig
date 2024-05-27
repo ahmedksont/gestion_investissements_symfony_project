@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {# Include Bootstrap CSS #}
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    {# Include your custom CSS #}
+    <link href="assets/css/stylelogin.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<section class="form-01-main">
+    <div class="form-cover">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-sub-main">
+                        <h1>Reset your password</h1>
+                        {{ form_start(resetForm) }}
+                            {{ form_row(resetForm.plainPassword) }}
+                            <button class="btn btn-primary">Reset password</button>
+                        {{ form_end(resetForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+
+{% block body %}
+<section class="form-01-main">
+    <div class="form-cover">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-sub-main">
+                        <div class="_main_head_as">
+                            <a href="#">
+                                <img src="assets/images/vector.png">
+                            </a>
+                        </div>
+                        <form method="post">
+                            {{ form_errors(registrationForm) }}
+
+                            {{ form_start(registrationForm) }}
+                                <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+                                <div class="form-group">
+                                    {{ form_row(registrationForm.email, {
+                                        'attr': {
+                                            'class': 'form-control _ge_de_ol',
+                                            'placeholder': 'Enter Email',
+                                            'autofocus': 'autofocus'
+                                        }
+                                    }) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_row(registrationForm.nom, {
+                                        'attr': {
+                                            'class': 'form-control',
+                                            'placeholder': 'Enter Nom'
+                                        }
+                                    }) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_row(registrationForm.prenom, {
+                                        'attr': {
+                                            'class': 'form-control',
+                                            'placeholder': 'Enter Prenom'
+                                        }
+                                    }) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_row(registrationForm.nomSociete, {
+                                        'attr': {
+                                            'class': 'form-control',
+                                            'placeholder': 'Enter Company Name'
+                                        }
+                                    }) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_row(registrationForm.adresse, {
+                                        'attr': {
+                                            'class': 'form-control',
+                                            'placeholder': 'Enter Address'
+                                        }
+                                    }) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_row(registrationForm.plainPassword, {
+                                        'attr': {
+                                            'class': 'form-control',
+                                            'placeholder': 'Enter Password'
+                                        }
+                                    }) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_row(registrationForm.agreeTerms, {
+                                        'label': 'I agree to the terms and conditions',
+                                        'attr': {
+                                            'class': 'form-check-input'
+                                        }
+                                    }) }}
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-lg btn-primary">Register</button>
+                                </div>
+                            {{ form_end(registrationForm) }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

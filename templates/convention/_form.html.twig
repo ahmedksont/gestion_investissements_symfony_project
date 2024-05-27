@@ -1,0 +1,8 @@
+{# Render the form with the projectId as a hidden field #}
+{{ form_start(form) }}
+    {{ form_row(form.projectId, {'attr': {'class': 'hidden-field'}}) }}
+    {# Render other form fields #}
+    {{ form_widget(form, {'attr': {'class': 'custom-form'}}) }}
+    <button type="submit" class="submit-button">Save</button>
+{{ form_end(form) }}
+ 

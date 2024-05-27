@@ -1,0 +1,208 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Convention{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/font/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/font/flaticon.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/fontawsom-all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .border-shadow {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<header>
+                <div class="my-nav sub-01">
+                    <div class="container">
+                        <div class="nav-items">
+                            <div class="menu-toggle">
+                                <div class="menu-burger"></div>
+                            </div>
+                            <div class="logo">
+                                 <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo">
+                            </div>
+
+                            <div class="menu-items">
+                                <div class="menu">
+                                    <ul>
+                                        <li><a href="{{ path('home') }}">Home</a></li>
+                                        {% if app.user %}
+                {# If the user is authenticated #}
+                {% if app.user.id == 1 %}
+                    {# If the authenticated user's ID is 1 #}
+                    <li><a href="{{ path('app_projet_index') }}">See Projects</a></li>
+                    <li><a href="{{ path('app_user_index') }}">See Users</a></li>
+                    <li><a href="{{ path('app_convention_index') }}">See Conventions</a></li>
+                {% else %}
+                    {# If the authenticated user's ID is not 1 #}
+                    <li><a href="{{ path('app_projet_index') }}">See Projects</a></li>
+                    <li><a href="{{ path('app_user_conventions') }}">See Own Conventions</a></li>
+                {% endif %}
+                <li><a href="{{ path('app_user_update', {'id': app.user.id}) }}">Edit Profile</a></li>
+
+                <li><a href="{{ path('app_logout') }}">Logout</a></li>
+            {% else %}
+                {# If the user is not authenticated #}
+                <li><a href="{{ path('app_login') }}">Login</a></li>
+                <li><a href="{{ path('app_register') }}">Register</a></li>
+            {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <section class="abt-01">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="seting">
+                                    <h3>utilisateur</h3>
+                                    <ol>
+                                        <li><a href="{{ path('home') }}" >Home</a> <i class="fas fa-chevron-double-right"></i></li>
+                                        <li>Details de l'utilisateur</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                 <br><br><br><br>  
+
+              <table class="table border-shadow">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ convention.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>DateDebut</th>
+                            <td>{{ convention.DateDebut ? convention.DateDebut|date('Y-m-d') : '' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <a href="{{ path('app_user_conventions') }}">Back to list</a>
+
+                <a href="{{ path('app_convention_edit', {'id': convention.id}) }}">Edit</a>
+
+                {{ include('convention/_delete_form.html.twig') }}
+            </div>
+        </section>
+    </main>
+
+<br><br><br><br>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="wrapper">
+                    <div class="content">
+                        <h2>About Us</h2>
+                        <p>We’re reimagining how you buy, sell, and rent. It’s now easier to get into a place you love. So let’s do this, together.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="wrapper">
+                    <div class="content">
+                        <h2>Quick Links</h2>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="wrapper">
+                    <div class="content">
+                        <h2>Contact Us</h2>
+                        <ol>
+                            <li>ksontini@bk.ru</li>
+                            <li>Sousse Beb Bhar 4000, Tunisia</li>
+                            <li>+216 46280499</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="wrapper">
+                    <div class="content">
+                        <h2>Follow Us</h2>
+                        <div class="social-media">
+                            <ol>
+                                <li><i class="fab fa-facebook-f"></i></li>
+                                <li><i class="fab fa-twitter"></i></li>
+                                <li><i class="fab fa-instagram"></i></li>
+                                <li><i class="fab fa-pinterest-p"></i></li>
+                                <li><i class="fab fa-dribbble"></i></li>
+                                <li><i class="fab fa-google"></i></li>
+                            </ol>
+                        </div>
+                        <h2>Subscribe</h2>
+                        <div class="submit-card">
+                            <div class="form-group">
+                                <input class="form-control" name="email" placeholder="Your Email">
+                                <i class="fal fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="end-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="copy-right">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="copy-right">
+                    <ol>
+                        <li>2024 @ Project Symfony All Rights Reserved Designed and developed by<a href="https://www.facebook.com/ahmed.ksontini2"> Ahmed Ksontini</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('assets/js/script.js') }}"></script>
+{% endblock %}

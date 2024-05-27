@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Convention{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/forms.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/font/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+   <style>
+        .border-shadow {
+            border: 1px solid #ddd; /* Border color */
+            border-radius: 5px; /* Adjust border radius as needed */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            padding: 20px; /* Adjust padding as needed */
+            margin-bottom: 20px; /* Add some space below the container */
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<header>
+                <div class="my-nav sub-01">
+                    <div class="container">
+                        <div class="nav-items">
+                            <div class="menu-toggle">
+                                <div class="menu-burger"></div>
+                            </div>
+                            <div class="logo">
+                                  <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo">
+                            </div>
+
+                            <div class="menu-items">
+                                <div class="menu">
+                                    <ul>
+                                        <li><a href="{{ path('home') }}">Home</a></li>
+                                        {% if app.user %}
+                {# If the user is authenticated #}
+                {% if app.user.id == 1 %}
+                    {# If the authenticated user's ID is 1 #}
+                    <li><a href="{{ path('app_projet_index') }}">See Projects</a></li>
+                    <li><a href="{{ path('app_user_index') }}">See Users</a></li>
+                    <li><a href="{{ path('app_convention_index') }}">See Conventions</a></li>
+                {% else %}
+                    {# If the authenticated user's ID is not 1 #}
+                    <li><a href="{{ path('app_projet_index') }}">See Projects</a></li>
+                    <li><a href="{{ path('app_user_conventions') }}">See Own Conventions</a></li>
+                {% endif %}
+                <li><a href="{{ path('app_user_update', {'id': app.user.id}) }}">Edit Profile</a></li>
+
+                <li><a href="{{ path('app_logout') }}">Logout</a></li>
+            {% else %}
+                {# If the user is not authenticated #}
+                <li><a href="{{ path('app_login') }}">Login</a></li>
+                <li><a href="{{ path('app_register') }}">Register</a></li>
+            {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <section class="abt-01">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="seting">
+                                    <h3>Projet</h3>
+                                    <ol>
+                                        <li><a href="{{ path('home') }}" >Home</a> <i class="fas fa-chevron-double-right"></i>
+                                        Modifier Projet</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                </main>
+    <main>
+        <br><br><br><br>
+
+    <main>
+        <div class="container border-shadow">
+            <h1>Create new Convention</h1>
+
+            {{ include('convention/_form.html.twig') }}
+
+            <a href="{{ path('app_projet_index') }}">Back to list</a>
+        </div>
+    </main>
+    <br><br><br><br>
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+    <div class="end-footer">
+        <!-- End footer content -->
+    </div>
+
+    <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
+{% endblock %}

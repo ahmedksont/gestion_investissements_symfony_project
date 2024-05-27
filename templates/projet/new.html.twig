@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Project{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/forms.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="menu-items">
+                                <div class="menu">
+                                    <ul>
+                                        <li><a href="{{ path('home') }}">Home</a></li>
+                                        {% if app.user %}
+                {# If the user is authenticated #}
+                {% if app.user.id == 1 %}
+                    {# If the authenticated user's ID is 1 #}
+                    <li><a href="{{ path('app_projet_index') }}">See Projects</a></li>
+                    <li><a href="{{ path('app_user_index') }}">See Users</a></li>
+                    <li><a href="{{ path('app_convention_index') }}">See Conventions</a></li>
+                {% else %}
+                    {# If the authenticated user's ID is not 1 #}
+                    <li><a href="{{ path('app_projet_index') }}">See Projects</a></li>
+                    <li><a href="{{ path('app_user_conventions') }}">See Own Conventions</a></li>
+                {% endif %}
+                <li><a href="{{ path('app_user_update', {'id': app.user.id}) }}">Edit Profile</a></li>
+
+                <li><a href="{{ path('app_logout') }}">Logout</a></li>
+            {% else %}
+                {# If the user is not authenticated #}
+                <li><a href="{{ path('app_login') }}">Login</a></li>
+                <li><a href="{{ path('app_register') }}">Register</a></li>
+            {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+<section class="form-container">
+    <h1>Create new Project</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.LibelleP, {'attr': {'class': 'form-input'}}) }}
+    {{ form_row(form.SecteurP, {'attr': {'class': 'form-input'}}) }}
+    {{ form_row(form.CoutFixe, {'attr': {'class': 'form-input'}}) }}
+    {{ form_row(form.CoutVar, {'attr': {'class': 'form-input'}}) }}
+    {{ form_row(form.DureeP, {'attr': {'class': 'form-input'}}) }}
+    {{ form_row(form.PictureUrl, {'attr': {'class': 'form-input'}}) }}
+    {{ form_row(form.convention, {'attr': {'class': 'form-input'}}) }}
+    
+    <button type="submit" class="form-submit">Create</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_projet_index') }}">Back to list</a>
+</section>
+{% endblock %}
